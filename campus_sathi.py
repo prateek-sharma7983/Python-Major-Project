@@ -4,7 +4,6 @@ import hashlib
 import secrets
 import hmac
 
-# MySQL connection settings
 DB_CONFIG = {
     "host": "localhost",
     "port": 3306,
@@ -29,7 +28,6 @@ def get_connection():
     return mysql.connector.connect(**DB_CONFIG)
 
 
-# Password ko secure format mein save karna
 def hash_password(password):
     salt = secrets.token_bytes(16)
     hashed = hashlib.pbkdf2_hmac(
@@ -53,7 +51,7 @@ def verify_password(password, saved_password):
         return False
 
 
-# Student registration
+
 def register_student():
     print("\n--- Student Registration ---")
 
@@ -124,7 +122,7 @@ def register_student():
             conn.close()
 
 
-# Student login
+
 def student_login():
     print("\n--- Student Login ---")
 
@@ -167,7 +165,6 @@ def student_login():
             conn.close()
 
 
-# Submit complaint
 def submit_complaint(student):
     print("\n--- Submit Complaint ---")
 
@@ -219,7 +216,6 @@ def submit_complaint(student):
             conn.close()
 
 
-# Student apni complaints dekhega
 def view_my_complaints(student):
     print("\n--- My Complaints ---")
 
@@ -264,7 +260,7 @@ def view_my_complaints(student):
             conn.close()
 
 
-# Student menu
+
 def student_menu(student):
     while True:
         print("\n--- Student Menu ---")
@@ -288,14 +284,14 @@ def student_menu(student):
             print("Invalid choice.")
 
 
-# Admin login
+
 def admin_login():
     print("\n--- Admin Login ---")
 
     username = input("Enter admin username: ").strip()
     password = input("Enter admin password: ")
 
-    # Demo credentials only
+   
     if username == "admin" and password == "admin123":
         print("Admin login successful!")
         admin_menu()
@@ -303,7 +299,6 @@ def admin_login():
         print("Invalid admin username or password.")
 
 
-# Admin all complaints dekhega
 def view_all_complaints():
     print("\n--- All Complaints ---")
 
@@ -354,7 +349,6 @@ def view_all_complaints():
             conn.close()
 
 
-# Admin complaint status update karega
 def update_complaint_status():
     print("\n--- Update Complaint Status ---")
 
@@ -432,7 +426,6 @@ def update_complaint_status():
             conn.close()
 
 
-# Admin summary
 def complaint_summary():
     conn = None
     cursor = None
